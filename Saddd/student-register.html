@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Register</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .auth-container { max-width: 400px; margin: 100px auto; padding: 20px; }
+    .auth-form { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+    input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
+  </style>
+</head>
+<body>
+
+<div class="auth-container">
+  <div class="auth-form">
+    <h2>🎓 Student Registration</h2>
+    <input id="email" type="email" placeholder="Email">
+    <input id="password" type="password" placeholder="Password">
+    <button onclick="register()">Register & Continue to Login</button>
+    <p><a href="student-login.html">Already registered? Login</a></p>
+  </div>
+</div>
+
+<script type="module">
+  import { auth, db } from './firebase.js';
+  import { createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js';
+  import { doc, setDoc } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js';
+
+  window.register = async () => {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      await setDoc(doc(db, 'users', userCredential.user.uid), {
+        email,
+        role: 'student'
+      });
+      alert('Student registered! Redirecting to login...');
+      window.location.href = 'student-login.html';
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+</script>
+
+</body>
+</html>

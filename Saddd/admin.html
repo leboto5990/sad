@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="navbar">
+  <h2>🧑‍💼 Admin Panel</h2>
+  <button onclick="logout()">Logout</button>
+</div>
+
+<div class="container">
+
+  <div class="sidebar">
+    <button onclick="loadCourses()">View Courses</button>
+  </div>
+
+  <div class="main">
+
+    <div class="card">
+      <h3>Add Course</h3>
+      <input id="title" placeholder="Course Title">
+      <input id="capacity" type="number" placeholder="Capacity">
+      <button onclick="addCourse()">Add</button>
+    </div>
+
+    <div class="card">
+      <h3>Courses</h3>
+      <div id="list"></div>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3>Bar Chart</h3>
+    <canvas id="barChart"></canvas>
+  </div>
+
+  <div class="card">
+    <h3>Pie Chart</h3>
+    <canvas id="pieChart"></canvas>
+  </div>
+
+  <div class="card">
+    <h3>Trend</h3>
+    <canvas id="lineChart"></canvas>
+  </div>
+</div>
+
+<script type="module" src="admin.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</body>
+</html>

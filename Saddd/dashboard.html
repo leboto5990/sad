@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="navbar">
+  <h2>🎓 Student Dashboard</h2>
+  <button onclick="logout()">Logout</button>
+</div>
+
+<div class="container">
+
+  <div class="sidebar">
+    <h3>Menu</h3>
+    <button onclick="loadCourses()">Courses</button>
+    <button onclick="loadMyCourses()">My Courses</button>
+  </div>
+
+  <div class="main">
+
+    <div class="card">
+      <h3>Available Courses</h3>
+      <div id="courses"></div>
+    </div>
+
+    <div class="card">
+      <h3>My Enrollments</h3>
+      <div id="myCourses"></div>
+    </div>
+
+    <div class="card">
+      <h3>Payments</h3>
+      <button onclick="makePayment()">Pay Tuition</button>
+    </div>
+
+  </div>
+
+</div>
+
+<script type="module" src="dashboard.js"></script>
+</body>
+</html>
